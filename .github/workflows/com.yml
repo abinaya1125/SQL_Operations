@@ -1,16 +1,17 @@
-name: CI Pipeline
+name: CI-CD Pipeline
 
 on:
-  [push]
-    
+  workflow_dispatch
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Use Composite Action
-        uses: ./.github/actions/java-build
-        with:
-          java-version: "17"
+    
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
+      
+      - name: Run Java Build Composite
+        uses: ./.github/actions/java-build
